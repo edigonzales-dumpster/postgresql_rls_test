@@ -1,0 +1,35 @@
+INTERLIS 2.3;
+
+MODEL PG_RLS_Waldpflege_Erfassung_20191208 (de)
+AT "http://www.geo.so.ch/models/AWJF"
+VERSION "2019-12-08"  =
+  IMPORTS GeometryCHLV95_V1;
+
+  TOPIC Waldpflege =
+    OID AS INTERLIS.UUIDOID;
+
+    CLASS Waldpflege =
+      /** Geometrie der gepflegten JungwaldflÃ¤chen wird von den Gesuchstellern erfasst.
+       */
+      Geometrie : MANDATORY GeometryCHLV95_V1.SurfaceWithOverlaps2mm;
+      /** Bemerkung des Gesuchstellers
+       */
+      Bemerkung : MTEXT;
+      /** Abrechnungsjahr wird automatisch erfasst beim Zeitpunkt der Speicherung der Waldpflege.
+       */
+      Jahr : MANDATORY INTERLIS.GregorianYear;
+      /** Eindeutige Nummer des Gesuchstellers
+       */
+      Gesuchnummer : MANDATORY 0 .. 9999;
+      /** Art der Waldpflege
+       */
+      Waldpflegeart : MANDATORY (
+            Dauerwald,
+            Jungwald
+      );
+      Erfasser : MANDATORY TEXT*50;
+    END Waldpflege;
+
+  END Waldpflege;
+
+END PG_RLS_Waldpflege_Erfassung_20191208.
