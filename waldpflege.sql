@@ -1,3 +1,6 @@
+create extension if not exists "uuid-ossp";
+create extension if not exists postgis;
+
 CREATE SCHEMA IF NOT EXISTS awjf_waldpflege_erfassung;
 CREATE SEQUENCE awjf_waldpflege_erfassung.t_ili2db_seq;;
 -- PG_RLS_Waldpflege_Erfassung_20191208.Waldpflege.Waldpflege
